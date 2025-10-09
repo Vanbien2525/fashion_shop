@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fashion Shop{% endblock %}</title>
+
+    <!-- Font + CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">
+                <a href="{% url 'core:base' %}">Bien Shop</a>
+            </h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/products:shop/">Shop</a></li>
+                    <li><a href="/wishlist:wishlist/">wishlist</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/cart/cart/">Cart</a></li>
+                    <li><a href="/cart/checkout/">Checkout</a></li>
+                    <li><a href="/accounts/register/">Register</a></li>
+                    <li><a href="/accounts/login/">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main>
+        {% block content %}
+        <section class="gallery">
+            <!-- base1.png (tách phông, nằm giữa nền màu vàng nhạt) -->
+            <div class="image-item base1">
+                <img src="{% static 'core/images/base1.png' %}" alt="Base 1">
+            </div>
+
+            <!-- Các ảnh nền full màn hình -->
+            <div class="image-item full-bg">
+                <img src="{% static 'core/images/base2.jpg' %}" alt="Base 2">
+            </div>
+            <div class="image-item full-bg">
+                <img src="{% static 'core/images/base3.jpg' %}" alt="Base 3">
+            </div>
+            <div class="image-item full-bg">
+                <img src="{% static 'core/images/base4.jpg' %}" alt="Base 4">
+            </div>
+        </section>
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Fashion Shop — Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>

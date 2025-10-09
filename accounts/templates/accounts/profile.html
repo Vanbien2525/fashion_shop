@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Trang cá nhân</h2>
+  <div class="card p-3">
+    {% if profile.profile_image %}
+      <img src="{{ profile.profile_image.url }}" width="150" class="rounded mb-3">
+    {% endif %}
+    <p><strong>Tên đăng nhập:</strong> {{ profile.user.username }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Số điện thoại:</strong> {{ profile.phone }}</p>
+    <p><strong>Địa chỉ:</strong> {{ profile.address }}</p>
+    <p><strong>Giới tính:</strong> {{ profile.get_gender_display }}</p>
+    <p><strong>Ngày đăng ký:</strong> {{ profile.registration_date|date:"d/m/Y" }}</p>
+  </div>
+
+  <a href="{% url 'accounts:export_users_pdf' %}" class="btn btn-success mt-3">📄 Xuất danh sách người dùng (PDF)</a>
+</div>
+{% endblock %}

@@ -1,3 +1,3 @@
 from django.db import models
 
-# Create your models here.
+# Hiện tại core không cần model, có thể để trống hoặc thêm model cho trang tĩnh sau này.
