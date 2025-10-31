@@ -1,20 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Thông tin cá nhân{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <h2>Trang cá nhân</h2>
-  <div class="card p-3">
-    {% if profile.profile_image %}
-      <img src="{{ profile.profile_image.url }}" width="150" class="rounded mb-3">
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+
+<div class="profile-container">
+  <h2>Thông tin cá nhân</h2>
+
+  <!-- Thông tin cá nhân -->
+  <p><strong>Tên tài khoản:</strong> {{ request.user.username }}</p>
+  <p><strong>Email:</strong> {{ request.user.email }}</p>
+  <p><strong>Số điện thoại:</strong> {{ request.user.phone_number }}</p>
+  <p><strong>Ngày đăng ký:</strong> {{ request.user.date_joined|date:"d/m/Y H:i" }}</p>
+
+  <!-- Thêm trường Ảnh -->
+  <label><strong>Ảnh:</strong></label>
+  <div class="profile-images">
+    {% if request.user.avatar %}
+      <img src="{{ request.user.avatar.url }}" alt="Ảnh người dùng">
+    {% else %}
+      <img src="{% static 'core/images/default-avatar.png' %}" alt="Ảnh mặc định">
     {% endif %}
-    <p><strong>Tên đăng nhập:</strong> {{ profile.user.username }}</p>
-    <p><strong>Email:</strong> {{ profile.user.email }}</p>
-    <p><strong>Số điện thoại:</strong> {{ profile.phone }}</p>
-    <p><strong>Địa chỉ:</strong> {{ profile.address }}</p>
-    <p><strong>Giới tính:</strong> {{ profile.get_gender_display }}</p>
-    <p><strong>Ngày đăng ký:</strong> {{ profile.registration_date|date:"d/m/Y" }}</p>
   </div>
 
-  <a href="{% url 'accounts:export_users_pdf' %}" class="btn btn-success mt-3">📄 Xuất danh sách người dùng (PDF)</a>
+  <!-- Nút Xuất file -->
+  <form method="get" action="{% url 'accounts:export_pdf' %}">
+    <button type="submit" class="export-btn">Xuất file</button>
+  </form>
+
+  <!-- Nút Đăng xuất -->
+  <form method="post" action="{% url 'accounts:logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="logout-btn">Đăng xuất</button>
+  </form>
 </div>
 {% endblock %}

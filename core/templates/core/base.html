@@ -8,6 +8,7 @@
     <!-- Font + CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
@@ -21,13 +22,25 @@
             </h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/products:shop/">Shop</a></li>
-                    <li><a href="/wishlist:wishlist/">wishlist</a></li>
-                    <li><a href="/contact/">Contact</a></li>
-                    <li><a href="/cart/cart/">Cart</a></li>
-                    <li><a href="/cart/checkout/">Checkout</a></li>
-                    <li><a href="/accounts/register/">Register</a></li>
-                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="#">Checkout</a></li>
+
+                    {# 👇 Thêm block riêng để trang con có thể thay thế Register/Login #}
+                    {% block user_nav %}
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'accounts:profile' %}">
+                                    <span class="material-icons">person</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                        {% endif %}
+                    {% endblock %}
                 </ul>
             </nav>
         </div>
@@ -37,12 +50,9 @@
     <main>
         {% block content %}
         <section class="gallery">
-            <!-- base1.png (tách phông, nằm giữa nền màu vàng nhạt) -->
             <div class="image-item base1">
                 <img src="{% static 'core/images/base1.png' %}" alt="Base 1">
             </div>
-
-            <!-- Các ảnh nền full màn hình -->
             <div class="image-item full-bg">
                 <img src="{% static 'core/images/base2.jpg' %}" alt="Base 2">
             </div>

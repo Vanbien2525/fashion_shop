@@ -1,0 +1,119 @@
+/* ===== PROFILE PAGE ===== */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #dbcc8f;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container tổng */
+.profile-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px 60px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Tiêu đề */
+.profile-container h2 {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Các dòng thông tin */
+.profile-container p, 
+.profile-container label {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Ảnh */
+.profile-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.profile-images img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    transition: transform 0.2s ease;
+}
+
+.profile-images img:hover {
+    transform: scale(1.03);
+    border-color: #e74c3c;
+}
+
+/* Nút xuất file */
+.export-btn {
+    display: block;
+    width: 200px;
+    margin: 10px 0 25px 0;
+    padding: 10px 0;
+    background-color: #e0e0e0;
+    color: #000;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-left: 0;
+}
+
+.export-btn:hover {
+    background-color: #d5d5d5;
+}
+
+/* Nút đăng xuất */
+.logout-btn {
+    display: block;
+    width: 200px;
+    padding: 12px 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #333;
+}
+
+/* Căn giữa nút đăng xuất */
+.profile-container form:last-of-type {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive (chỉ tinh chỉnh khi thu nhỏ) */
+@media (max-width: 768px) {
+    .profile-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .profile-images img {
+        width: 120px;
+        height: 150px;
+    }
+
+    .export-btn, .logout-btn {
+        width: 100%;
+    }
+}

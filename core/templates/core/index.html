@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Trang Chủ - Bien Shop{% endblock %}
+
+{# Ghi đè phần user_nav của base.html để chỉ hiện icon người #}
+{% block user_nav %}
+<li>
+    <a href="{% url 'accounts:profile' %}">
+        <span class="material-icons">person</span>
+    </a>
+</li>
+{% endblock %}
+
+{% block content %}
+<section class="gallery">
+    <div class="image-item base1">
+        <img src="{% static 'core/images/base1.png' %}" alt="Base 1">
+    </div>
+    <div class="image-item full-bg">
+        <img src="{% static 'core/images/base2.jpg' %}" alt="Base 2">
+    </div>
+    <div class="image-item full-bg">
+        <img src="{% static 'core/images/base3.jpg' %}" alt="Base 3">
+    </div>
+    <div class="image-item full-bg">
+        <img src="{% static 'core/images/base4.jpg' %}" alt="Base 4">
+    </div>
+</section>
+{% endblock %}

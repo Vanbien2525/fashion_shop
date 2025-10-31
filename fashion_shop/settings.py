@@ -54,7 +54,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # Vì bạn để base.html trong core/templates/core/
         # nên không cần DIRS riêng, chỉ cần bật APP_DIRS=True
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'core', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,3 +116,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # --- AUTH MODEL TÙY CHỈNH ---
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/index/'

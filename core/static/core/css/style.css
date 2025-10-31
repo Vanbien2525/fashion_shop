@@ -11,7 +11,7 @@ body {
 .navbar {
     background: #ffffff;
     border-bottom: 1px solid #eee;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.03); /*0, 0, 0, 0.03*/
     position: sticky;
     top: 0;
     z-index: 100;
@@ -36,7 +36,7 @@ body {
     text-decoration: none;
     font-size: 1.7rem;
     font-weight: 600;
-    color: #222;
+    color: #da0d0d;
     transition: color 0.3s ease;
 }
 
@@ -153,4 +153,51 @@ footer {
 /* Cuộn mượt */
 html {
     scroll-behavior: smooth;
+}
+
+
+/* ====== USER MENU (TRANG SAU KHI ĐĂNG NHẬP) ====== */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-icon {
+    font-size: 1.4rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.user-icon:hover {
+    color: #c8a951;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    z-index: 10;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+.user-menu:hover .dropdown-content {
+    display: block;
 }

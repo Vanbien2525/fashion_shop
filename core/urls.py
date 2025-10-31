@@ -4,6 +4,6 @@ from . import views
 app_name = 'core'
 
 urlpatterns = [
-    path('', views.home, name='base'),
-    path('contact/', views.contact, name='contact'),
+    path('', views.base, name='base'),      # trang mặc định
+    path('index/', views.index, name='index'),  # trang index sau khi login
 ]
