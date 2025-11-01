@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block title %}Đăng ký{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
 
@@ -8,6 +10,7 @@
   <div class="register-left">
     <img src="{% static 'core/images/base1.png' %}" alt="Model" class="model-image">
   </div>
+
   <div class="register-right">
     <div class="register-form-container">
       <img src="{% static 'accounts/images/logo.png' %}" alt="Logo" class="register-logo">
@@ -16,6 +19,7 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
+        <!-- Username -->
         <div class="form-group">
           {{ form.username.label_tag }} {{ form.username }}
           {% if form.username.errors %}
@@ -27,6 +31,7 @@
           {% endif %}
         </div>
 
+        <!-- Email -->
         <div class="form-group">
           {{ form.email.label_tag }} {{ form.email }}
           {% if form.email.errors %}
@@ -38,6 +43,7 @@
           {% endif %}
         </div>
 
+        <!-- Phone -->
         <div class="form-group">
           {{ form.phone_number.label_tag }} {{ form.phone_number }}
           {% if form.phone_number.errors %}
@@ -49,6 +55,7 @@
           {% endif %}
         </div>
 
+        <!-- Password -->
         <div class="form-group">
           {{ form.password1.label_tag }} {{ form.password1 }}
           {% if form.password1.errors %}
@@ -71,11 +78,12 @@
           {% endif %}
         </div>
 
+        <!-- Multiple Images Upload -->
         <div class="form-group">
-          {{ form.avatar.label_tag }} {{ form.avatar }}
-          {% if form.avatar.errors %}
+          {{ form.images.label_tag }} {{ form.images }}
+          {% if form.images.errors %}
             <div class="error-message">
-              {% for error in form.avatar.errors %}
+              {% for error in form.images.errors %}
                 <p>{{ error }}</p>
               {% endfor %}
             </div>
@@ -93,7 +101,9 @@
         <button type="submit" class="btn-register">Đăng ký</button>
       </form>
 
-      <p class="login-link">Đã có tài khoản? <a href="{% url 'accounts:login' %}">Đăng nhập</a></p>
+      <p class="login-link">
+        Đã có tài khoản? <a href="{% url 'accounts:login' %}">Đăng nhập</a>
+      </p>
     </div>
   </div>
 </div>
@@ -108,5 +118,4 @@
     margin: 0;
   }
 </style>
-
 {% endblock %}

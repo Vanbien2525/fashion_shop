@@ -9,31 +9,42 @@
 <div class="profile-container">
   <h2>Thông tin cá nhân</h2>
 
-  <!-- Thông tin cá nhân -->
-  <p><strong>Tên tài khoản:</strong> {{ request.user.username }}</p>
-  <p><strong>Email:</strong> {{ request.user.email }}</p>
-  <p><strong>Số điện thoại:</strong> {{ request.user.phone_number }}</p>
-  <p><strong>Ngày đăng ký:</strong> {{ request.user.date_joined|date:"d/m/Y H:i" }}</p>
-
-  <!-- Thêm trường Ảnh -->
-  <label><strong>Ảnh:</strong></label>
-  <div class="profile-images">
-    {% if request.user.avatar %}
-      <img src="{{ request.user.avatar.url }}" alt="Ảnh người dùng">
-    {% else %}
-      <img src="{% static 'core/images/default-avatar.png' %}" alt="Ảnh mặc định">
-    {% endif %}
+  <!-- Thông tin cơ bản -->
+  <div class="info-section">
+    <p><strong>Tên tài khoản:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Số điện thoại:</strong> {{ request.user.phone_number|default:"(Chưa cập nhật)" }}</p>
+    <p><strong>Ngày đăng ký:</strong> {{ request.user.date_joined|date:"d/m/Y H:i" }}</p>
   </div>
 
-  <!-- Nút Xuất file -->
-  <form method="get" action="{% url 'accounts:export_pdf' %}">
-    <button type="submit" class="export-btn">Xuất file</button>
-  </form>
+  <!-- Ảnh đã upload -->
+  <div class="avatar-section">
+    <label><strong>Ảnh đã tải lên:</strong></label>
+    <div class="profile-images">
+      {% if user_images %}
+        {% for image in user_images|slice:":5" %}
+          <div class="image-box">
+            <img src="{{ image.image.url }}" alt="Ảnh {{ forloop.counter }}">
+          </div>
+        {% empty %}
+          <p>Chưa có ảnh nào được tải lên.</p>
+        {% endfor %}
+      {% else %}
+        <img src="{% static 'core/images/default-avatar.png' %}" alt="Ảnh mặc định">
+      {% endif %}
+    </div>
+  </div>
 
-  <!-- Nút Đăng xuất -->
-  <form method="post" action="{% url 'accounts:logout' %}">
-    {% csrf_token %}
-    <button type="submit" class="logout-btn">Đăng xuất</button>
-  </form>
+  <!-- Các nút thao tác -->
+  <div class="button-group">
+    <form method="get" action="{% url 'accounts:export_pdf' %}">
+      <button type="submit" class="export-btn">Xuất file</button>
+    </form>
+
+    <form method="post" action="{% url 'accounts:logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="logout-btn">Đăng xuất</button>
+    </form>
+  </div>
 </div>
 {% endblock %}

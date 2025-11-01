@@ -1,15 +1,22 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
+from .models import CustomUser, UserImage
 from django.contrib.auth import get_user_model
 
-
 User = get_user_model()
+
+# ✅ Widget hỗ trợ multiple file upload
+class MultiFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, label="Email")
     phone_number = forms.CharField(max_length=15, label="Số điện thoại")
-    avatar = forms.ImageField(required=False, label="Upload ảnh")
+    images = forms.Field(
+        required=False,
+        label="Upload ảnh",
+        widget=MultiFileInput(attrs={'multiple': True})
+    )
     password1 = forms.CharField(
         label="Mật khẩu",
         strip=False,
@@ -23,7 +30,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'phone_number', 'avatar', 'password1', 'password2']
+        fields = ['username', 'email', 'phone_number', 'password1', 'password2']
 
     def clean(self):
         cleaned_data = super().clean()
