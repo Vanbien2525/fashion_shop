@@ -41,6 +41,7 @@ def login_view(request):
     """
     Xử lý đăng nhập người dùng.
     """
+    error = None  
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -51,9 +52,10 @@ def login_view(request):
             messages.success(request, f"Xin chào {user.username} 👋")
             return redirect('core:index')
         else:
-            messages.error(request, "Sai tên đăng nhập hoặc mật khẩu.")
+            error = "Sai tên đăng nhập hoặc mật khẩu."  
     
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html', {'error': error})
+
 
 
 @login_required

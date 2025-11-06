@@ -1,4 +1,4 @@
-/* ===== Toàn trang ===== */
+/* ====================== Toàn trang ====================== */
 .login-page {
   display: flex;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-/* ===== Ảnh bên trái ===== */
+/* ====================== Ảnh bên trái ====================== */
 .register-left {
   flex: 1;
   display: flex;
@@ -24,12 +24,12 @@
   object-fit: contain;
 }
 
-/* ===== Form bên phải ===== */
+/* ====================== Form bên phải ====================== */
 .login-form-container {
   flex: 0 0 400px;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 40px 32px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
@@ -46,7 +46,7 @@ h2 {
   margin-bottom: 24px;
 }
 
-/* ===== Form ===== */
+/* ====================== Form input ====================== */
 .form-group {
   text-align: left;
   margin-bottom: 16px;
@@ -70,6 +70,7 @@ h2 {
   font-size: 14px;
   color: #333;
   outline: none;
+  transition: 0.2s ease;
 }
 
 .login-form-container input:focus {
@@ -77,7 +78,7 @@ h2 {
   background-color: #fff;
 }
 
-/* ===== Nút đăng nhập ===== */
+/* ====================== Nút đăng nhập ====================== */
 .btn-login {
   width: 100%;
   padding: 12px;
@@ -88,7 +89,7 @@ h2 {
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
   margin-top: 10px;
 }
 
@@ -96,18 +97,20 @@ h2 {
   background: #222;
 }
 
-/* ===== Thông báo lỗi ===== */
+/* ====================== Thông báo lỗi ====================== */
 .alert {
-  background: #f8d7da;
-  color: #842029;
+  background-color: #f8d7da;
   border: 1px solid #f5c2c7;
+  color: #842029;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
   border-radius: 8px;
   padding: 10px;
   font-size: 14px;
-  margin-bottom: 14px;
 }
 
-/* ===== Link đăng ký ===== */
+/* ====================== Link đăng ký ====================== */
 .register-link {
   margin-top: 14px;
   font-size: 14px;
@@ -124,7 +127,7 @@ h2 {
   text-decoration: underline;
 }
 
-/* ===== Responsive ===== */
+/* ====================== Responsive ====================== */
 @media (max-width: 900px) {
   .login-page {
     flex-direction: column;

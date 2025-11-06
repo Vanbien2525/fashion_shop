@@ -1,19 +1,18 @@
-/* ===== Reset / Cơ bản cho trang register ===== */
+/* ====================== Toàn trang ====================== */
 .register-page {
   display: flex;
-  min-height: calc(100vh - 65px); /* trừ header nếu header cao ~65px */
-  height: calc(100vh - 65px);
-  background-color: #dbcc8f; /* nền vàng nhạt */
+  min-height: calc(100vh - 65px); /* trừ phần header */
+  background-color: #dbcc8f;
   overflow: hidden;
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* ===== LEFT: hình mẫu chiếm khoảng 65% ===== */
+/* ====================== Cột trái: Hình mẫu ====================== */
 .register-left {
-  width: 65%;
+  flex: 0 0 65%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding-left: 3rem;
   box-sizing: border-box;
 }
@@ -24,13 +23,13 @@
   height: auto;
   object-fit: contain;
   display: block;
-  pointer-events: none;
   user-select: none;
+  pointer-events: none;
 }
 
-/* ===== RIGHT: form chiếm ~35% và căn giữa dọc ===== */
+/* ====================== Cột phải: Form đăng ký ====================== */
 .register-right {
-  width: 35%;
+  flex: 0 0 35%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,32 +37,31 @@
   box-sizing: border-box;
 }
 
-/* ===== Card form ===== */
+/* ====================== Thẻ chứa form ====================== */
 .register-form-container {
   width: 100%;
   max-width: 380px;
-  background: #ffffff;
-  padding: 28px 28px;
+  background: #fff;
+  padding: 28px;
   border-radius: 12px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   text-align: center;
 }
 
-/* ===== Logo + tiêu đề ===== */
 .register-logo {
   width: 72px;
   margin-bottom: 10px;
 }
 
 h2 {
-  color: #da0d0d; /* Đỏ đậm */
-  text-align: center;
-  margin-bottom: 20px;
+  color: #da0d0d;
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* ===== Nhóm form ===== */
+/* ====================== Nhóm form ====================== */
 .form-group {
   text-align: left;
   margin-bottom: 12px;
@@ -72,12 +70,12 @@ h2 {
 .form-group label {
   font-size: 13px;
   color: #333;
-  display: block;
   margin-bottom: 6px;
   font-weight: 500;
+  display: block;
 }
 
-/* ===== Input chung ===== */
+/* ====================== Input chung ====================== */
 .register-form-container input[type="text"],
 .register-form-container input[type="email"],
 .register-form-container input[type="password"],
@@ -88,24 +86,31 @@ h2 {
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   background: #fafafa;
-  box-sizing: border-box;
   font-size: 14px;
   color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.register-form-container input:focus {
+  border-color: #d82727;
+  background-color: #fff;
 }
 
 .register-form-container input[type="file"] {
   padding: 8px;
 }
 
-/* ===== Nút đăng ký ===== */
+/* ====================== Nút đăng ký ====================== */
 .btn-register {
   width: 100%;
   padding: 12px;
   background: #0b0b0b;
   color: #fff;
-  border: 0;
+  border: none;
   border-radius: 8px;
   font-weight: 700;
+  font-size: 15px;
   margin-top: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -115,40 +120,41 @@ h2 {
   background: #222;
 }
 
-/* ===== Liên kết đăng nhập ===== */
+/* ====================== Liên kết đăng nhập ====================== */
 .login-link {
   margin-top: 14px;
   font-size: 14px;
-  color: black; /* Dòng chữ màu đen */
+  color: #000;
 }
 
 .login-link a {
-  color: black; /* "Đăng nhập" cũng màu đen */
+  color: #000;
   text-decoration: underline;
+  font-weight: 600;
 }
 
 .login-link a:hover {
-  color: #333; /* Đậm hơn khi hover */
+  color: #333;
 }
 
-/* ===== Lỗi field ===== */
+/* ====================== Thông báo lỗi ====================== */
+.error-message,
 .field-error {
   color: #b23;
   font-size: 13px;
   margin-top: 6px;
 }
 
-/* ===== Responsive: điện thoại ===== */
+/* ====================== Responsive ====================== */
 @media (max-width: 900px) {
   .register-page {
     flex-direction: column;
     min-height: auto;
-    height: auto;
   }
 
   .register-left {
     width: 100%;
-    padding: 2rem 1rem 0 1rem;
+    padding: 2rem 1rem 0;
   }
 
   .register-right {
@@ -158,6 +164,10 @@ h2 {
 
   .register-form-container {
     max-width: 520px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 40px;
+  }
+
+  .model-image {
+    max-width: 80%;
   }
 }

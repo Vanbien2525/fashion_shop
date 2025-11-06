@@ -1,35 +1,47 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block title %}Đăng nhập{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 
 <div class="login-page">
+  <!-- Cột trái: ảnh nền -->
   <div class="register-left">
     <img src="{% static 'core/images/base1.png' %}" alt="Model" class="model-image">
   </div>
+
+  <!-- Cột phải: form đăng nhập -->
   <div class="login-form-container">
     <img src="{% static 'accounts/images/logo.png' %}" alt="Logo" class="login-logo">
     <h2>Đăng nhập</h2>
 
     {% if error %}
-      <div class="alert">{{ error }}</div>
+      <div class="alert">⚠️ {{ error }}</div>
     {% endif %}
 
     <form method="post">
       {% csrf_token %}
+
+      <!-- Tên đăng nhập -->
       <div class="form-group">
         <label for="username">Tên đăng nhập</label>
         <input type="text" name="username" id="username" required>
       </div>
+
+      <!-- Mật khẩu -->
       <div class="form-group">
         <label for="password">Mật khẩu</label>
         <input type="password" name="password" id="password" required>
       </div>
+
       <button type="submit" class="btn-login">Đăng nhập</button>
     </form>
 
-    <p class="register-link">Chưa có tài khoản? <a href="{% url 'accounts:register' %}">Đăng ký ngay</a></p>
+    <p class="register-link">
+      Chưa có tài khoản? <a href="{% url 'accounts:register' %}">Đăng ký ngay</a>
+    </p>
   </div>
 </div>
 {% endblock %}

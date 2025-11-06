@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
 
 <div class="register-page">
+  <!-- Cột trái: hình nền -->
   <div class="register-left">
     <img src="{% static 'core/images/base1.png' %}" alt="Model" class="model-image">
   </div>
 
+  <!-- Cột phải: form đăng ký -->
   <div class="register-right">
     <div class="register-form-container">
       <img src="{% static 'accounts/images/logo.png' %}" alt="Logo" class="register-logo">
@@ -19,7 +21,7 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Username -->
+        <!-- Tên đăng nhập -->
         <div class="form-group">
           {{ form.username.label_tag }} {{ form.username }}
           {% if form.username.errors %}
@@ -43,7 +45,7 @@
           {% endif %}
         </div>
 
-        <!-- Phone -->
+        <!-- Số điện thoại -->
         <div class="form-group">
           {{ form.phone_number.label_tag }} {{ form.phone_number }}
           {% if form.phone_number.errors %}
@@ -55,7 +57,7 @@
           {% endif %}
         </div>
 
-        <!-- Password -->
+        <!-- Mật khẩu -->
         <div class="form-group">
           {{ form.password1.label_tag }} {{ form.password1 }}
           {% if form.password1.errors %}
@@ -67,6 +69,7 @@
           {% endif %}
         </div>
 
+        <!-- Nhập lại mật khẩu -->
         <div class="form-group">
           {{ form.password2.label_tag }} {{ form.password2 }}
           {% if form.password2.errors %}
@@ -78,7 +81,7 @@
           {% endif %}
         </div>
 
-        <!-- Multiple Images Upload -->
+        <!-- Upload nhiều ảnh -->
         <div class="form-group">
           {{ form.images.label_tag }} {{ form.images }}
           {% if form.images.errors %}
@@ -90,6 +93,7 @@
           {% endif %}
         </div>
 
+        <!-- Lỗi chung -->
         {% if form.non_field_errors %}
           <div class="error-message">
             {% for error in form.non_field_errors %}
@@ -107,15 +111,4 @@
     </div>
   </div>
 </div>
-
-<style>
-  .error-message {
-    color: #ff4d4f;
-    font-size: 0.9rem;
-    margin-top: 4px;
-  }
-  .error-message p {
-    margin: 0;
-  }
-</style>
 {% endblock %}
